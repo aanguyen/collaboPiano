@@ -10,7 +10,7 @@ void loop() {
   Serial.print("Force value: ");
   Serial.println(fsrReading);
   if(fsrReading > 250 && fsrReading < 500){
-    tone(3, 441, 100); 
+    tone(3, 253, 100); 
   }
   else if (fsrReading > 500) {
     tone(3, 659, 100);  
