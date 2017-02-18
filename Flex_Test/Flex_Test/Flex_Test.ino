@@ -9,7 +9,11 @@ void loop() {
   fsrReading = analogRead(fsrPin);
   Serial.print("Force value: ");
   Serial.println(fsrReading);
-
-  delay(10);
+  if(fsrReading > 250 && fsrReading < 500){
+    tone(3, 441, 100); 
+  }
+  else if (fsrReading > 500) {
+    tone(3, 659, 100);  
+  }
 
 }
