@@ -1,4 +1,5 @@
-# curlyp
+# collaboPiano
+For 2017 IEEE Hardware Hackathon at the University of Toronto.
 
 Hardware used:  
 
