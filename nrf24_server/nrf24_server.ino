@@ -10,6 +10,9 @@ int fsrReading1;
 int fsrPin2 = A1;
 int fsrReading2;
 
+int fsrPin3 = A2;
+int fsrReading3;
+
 void setup() 
 {
   Serial.begin(9600);
@@ -18,7 +21,7 @@ void setup()
   if (!nrf24.init())
     Serial.println("init failed");
   // Defaults after init are 2.402 GHz (channel 2), 2Mbps, 0dBm
-  if (!nrf24.setChannel(1))
+  if (!nrf24.setChannel(3))
     Serial.println("setChannel failed");
   if (!nrf24.setRF(RH_NRF24::DataRate2Mbps, RH_NRF24::TransmitPower0dBm))
     Serial.println("setRF failed");    
@@ -44,16 +47,23 @@ void loop()
   }
   fsrReading1 = analogRead(fsrPin1);
   fsrReading2 = analogRead(fsrPin2);
+  fsrReading3 = analogRead(fsrPin3);
 
   if(fsrReading1 > 250){
-      tone(3, 1109, 100);
-      uint8_t data[] = "1109";
+      tone(3, 880, 100);
+      uint8_t data[] = "880";
       nrf24.send(data, sizeof(data));
       nrf24.waitPacketSent();
   }
   else if(fsrReading2 > 250){
-    tone(3, 988, 100);
-    uint8_t data[] = "988";
+    tone(3, 1047, 100);
+    uint8_t data[] = "1047";
+    nrf24.send(data, sizeof(data));
+    nrf24.waitPacketSent();
+  }
+  else if(fsrReading3 > 250){
+    tone(3, 698, 100);
+    uint8_t data[] = "698";
     nrf24.send(data, sizeof(data));
     nrf24.waitPacketSent();
   }
