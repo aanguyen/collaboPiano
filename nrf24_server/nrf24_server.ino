@@ -4,8 +4,11 @@
 
 RH_NRF24 nrf24;
 
-int fsrPin = A0;
-int fsrReading;
+int fsrPin1 = A0;
+int fsrReading1;
+
+int fsrPin2 = A1;
+int fsrReading2;
 
 void setup() 
 {
@@ -39,12 +42,20 @@ void loop()
     }
 
   }
-  fsrReading = analogRead(fsrPin);
-  if(fsrReading > 250){
-      tone(3, 698, 100);
-      uint8_t data[] = "698";
+  fsrReading1 = analogRead(fsrPin1);
+  fsrReading2 = analogRead(fsrPin2);
+
+  if(fsrReading1 > 250){
+      tone(3, 1109, 100);
+      uint8_t data[] = "1109";
       nrf24.send(data, sizeof(data));
       nrf24.waitPacketSent();
-    }
+  }
+  else if(fsrReading2 > 250){
+    tone(3, 988, 100);
+    uint8_t data[] = "988";
+    nrf24.send(data, sizeof(data));
+    nrf24.waitPacketSent();
+  }
 }
 
