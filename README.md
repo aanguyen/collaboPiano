@@ -19,8 +19,8 @@ For 2017 IEEE Hardware Hackathon at the University of Toronto.
 
 ## Force Sensor Setup
 
-![Force Sensor Setup](http://i.imgur.com/hOJLgpu.gif)
+![Force Sensor Setup](http://i.imgur.com/2CpOSbc.png)
 
 ## Notes:
-- Speakers were connected to pin 3
+- Speakers were connected to pin 3 (and grounded)
 - When connecting the force sensors, ensure that they are all connected to separate grounds to prevent interference.
