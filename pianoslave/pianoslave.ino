@@ -5,7 +5,7 @@
 RH_NRF24 nrf24;
 int fsrPin0 = A0;
 int fsrPin1 = A1;
-int fsrReading0, fsrReading2;
+int fsrReading0, fsrReading1;
 
 void setup() 
 {
@@ -23,12 +23,20 @@ void setup()
 void loop()
 {
   fsrReading0 = analogRead(fsrPin0);
+  fsrReading1 = analogRead(fsrPin1);
+  Serial.print("   Pressure 1: ");
+  Serial.println(fsrReading1);
   if (fsrReading0 > 250) {
-    Serial.println("Sending to nrf24_server");
-    uint8_t data []= "1046";
+    uint8_t data[] = "880";
     nrf24.send(data, sizeof(data));
-    tone(3, 1046, 100);
+    tone(3, 880, 100);
   }
+  if (fsrReading1 > 500) {
+    uint8_t data1[] = "831";
+    nrf24.send(data1, sizeof(data1));
+    tone(3, 831, 100);
+  }
+  
   nrf24.waitPacketSent();
   //Now wait for a reply
   uint8_t buf[RH_NRF24_MAX_MESSAGE_LEN];
@@ -51,7 +59,7 @@ void loop()
   }
   else
   {
-    Serial.println("No tone on other piano");
+    //There is no tone on the other piano
   }
 }
 
