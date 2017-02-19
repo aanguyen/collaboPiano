@@ -24,3 +24,4 @@ For 2017 IEEE Hardware Hackathon at the University of Toronto.
 ## Notes:
 - Speakers were connected to pin 3 (and grounded)
 - When connecting the force sensors, ensure that they are all connected to separate grounds to prevent interference.
+- Force sensor setup is the same with Arduino Uno which is what we used
