@@ -5,8 +5,7 @@
 RH_NRF24 nrf24;
 int fsrPin0 = A0;
 int fsrPin1 = A1;
-int fsrPin2 = A2;
-int fsrReading0, fsrReading1, fsrReading2;
+int fsrReading0, fsrReading1;
 
 void setup() 
 {
@@ -25,7 +24,6 @@ void loop()
 {
   fsrReading0 = analogRead(fsrPin0);
   fsrReading1 = analogRead(fsrPin1);
-  fsrReading2 = analogRead(fsrPin2);
   Serial.print("   Pressure 1: ");
   Serial.println(fsrReading1);
   if (fsrReading0 > 250) {
@@ -33,16 +31,12 @@ void loop()
     nrf24.send(data, sizeof(data));
     tone(3, 880, 100);
   }
-  if (fsrReading1 > 250) {
+  if (fsrReading1 > 500) {
     uint8_t data1[] = "831";
     nrf24.send(data1, sizeof(data1));
     tone(3, 831, 100);
   }
-  if (fsrReading2 > 250) {
-    uint8_t data2[] = "441";
-    nrf24.send(data2, sizeof(data2));
-    tone(3, 441, 100);  
-  }
+  
   nrf24.waitPacketSent();
   //Now wait for a reply
   uint8_t buf[RH_NRF24_MAX_MESSAGE_LEN];
