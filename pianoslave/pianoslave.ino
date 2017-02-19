@@ -13,7 +13,7 @@ void setup()
   if (!nrf24.init())
     Serial.println("init failed");
   // Defaults after init are 2.402 GHz (channel 2), 2Mbps, 0dBm
-  if (!nrf24.setChannel(1))
+  if (!nrf24.setChannel(3))
     Serial.println("setChannel failed");
   if (!nrf24.setRF(RH_NRF24::DataRate2Mbps, RH_NRF24::TransmitPower0dBm))
     Serial.println("setRF failed");    
@@ -26,17 +26,17 @@ void loop()
   fsrReading1 = analogRead(fsrPin1);
   Serial.print("   Pressure 1: ");
   Serial.println(fsrReading1);
+  //Notes for COLLABria 2007
   if (fsrReading0 > 250) {
-    uint8_t data[] = "880";
+    uint8_t data[] = "587";
     nrf24.send(data, sizeof(data));
-    tone(3, 880, 100);
+    tone(3, 587, 100);
   }
-  if (fsrReading1 > 500) {
-    uint8_t data1[] = "831";
+  else if (fsrReading1 > 250) {
+    uint8_t data1[] = "659";
     nrf24.send(data1, sizeof(data1));
-    tone(3, 831, 100);
+    tone(3, 659, 100);
   }
-  
   nrf24.waitPacketSent();
   //Now wait for a reply
   uint8_t buf[RH_NRF24_MAX_MESSAGE_LEN];
