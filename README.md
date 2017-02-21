@@ -15,13 +15,17 @@ For 2017 IEEE Hardware Hackathon at the University of Toronto.
 
 ## Tranceiver Setup
 
-![Transceiver Setup](https://i.gyazo.com/9605aa368e5561ce21280a224bb344dd.png)
+![Transceiver Setup](http://i.imgur.com/ojAGs1x.png)
 
 ## Force Sensor Setup
 
 ![Force Sensor Setup](http://i.imgur.com/2CpOSbc.png)
 
-## Notes:
+## Notes
 - Speakers were connected to pin 3 (and grounded)
 - When connecting the force sensors, ensure that they are all connected to separate grounds to prevent interference.
 - Force sensor setup is the same with Arduino Uno which is what we used (10kΩ resistor)
+
+## The Final Product!
+
+![Final setup](http://i.imgur.com/TfViYkq.jpg)
